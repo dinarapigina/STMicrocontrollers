@@ -4,42 +4,42 @@
 
 void lcdBeginTransmission(uint8_t data)
 {
-  data |= 0x00;			    
-	i2cTransmissionByte(lcd_addr,data);	// Вывод данных
-	i2cTransmissionByte(lcd_addr,(data | 0x04));	// Е в единицу
+	data |= 0x00;
+	i2cTransmissionByte(lcd_addr,data);	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	i2cTransmissionByte(lcd_addr,(data | 0x04));	// пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for(int i=0;i<100;i++){};
-  i2cTransmissionByte(lcd_addr,(data & (~0x04)));	// Е в ноль
+	i2cTransmissionByte(lcd_addr,(data & (~0x04)));	// пїЅ пїЅ пїЅпїЅпїЅпїЅ
 	for(int i=0;i<1000;i++){};
-	
+
 }
 
 void lcdTransmission(uint8_t data)
 {
-  data |= 0x08;			    
-	i2cTransmissionByte(lcd_addr,data);	// Вывод данных
-	i2cTransmissionByte(lcd_addr,(data | 0x04));	// Е в единицу
+	data |= 0x08;
+	i2cTransmissionByte(lcd_addr,data);	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	i2cTransmissionByte(lcd_addr,(data | 0x04));	// пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for(int i=0;i<100;i++){};
-  i2cTransmissionByte(lcd_addr,(data & (~0x04)));	// Е в ноль
+	i2cTransmissionByte(lcd_addr,(data & (~0x04)));	// пїЅ пїЅ пїЅпїЅпїЅпїЅ
 	for(int i=0;i<1000;i++){};
 }
 
 void lcdBegin()
-{ 
+{
 	i2cBegin();
 
 	//i2cTransmissionByte(lcd_addr,0x00);
 	for(uint32_t i=0;i<1000;i++);
-	lcdBeginTransmission(0x30);	
-  for(uint32_t i=0;i<1000;i++);	
 	lcdBeginTransmission(0x30);
-	for(uint32_t i=0;i<1000;i++);	
+	for(uint32_t i=0;i<1000;i++);
 	lcdBeginTransmission(0x30);
-  for(uint32_t i=0;i<1000;i++);	
-  lcdBeginTransmission(0x20);	
-  lcdBeginTransmission(0x20);
-  lcdBeginTransmission(0x80);	
-	lcdBeginTransmission(0x00);	
-	lcdBeginTransmission(0xC0);	
+	for(uint32_t i=0;i<1000;i++);
+	lcdBeginTransmission(0x30);
+	for(uint32_t i=0;i<1000;i++);
+	lcdBeginTransmission(0x20);
+	lcdBeginTransmission(0x20);
+	lcdBeginTransmission(0x80);
+	lcdBeginTransmission(0x00);
+	lcdBeginTransmission(0xC0);
 	lcdBeginTransmission(0x00);
 	lcdBeginTransmission(0x10);
 	lcdBeginTransmission(0x00);
@@ -57,7 +57,7 @@ void clear()
 
 void setCursor()
 {
-		lcdBeginTransmission(0x80);
+	lcdBeginTransmission(0x80);
 }
 
 void writeByte(uint8_t byte)
@@ -74,54 +74,54 @@ void lcdWrite(char *string)
 {
 	for(int i=0; i < strlen(string);i++)
 	{
-			writeByte(string[i]);
+		writeByte(string[i]);
 	}
 }
 
 int main()
-{ 
-	
+{
+
 	lcdBegin();
-	setCursor();		
-	
+	setCursor();
+
 	while(1)
 	{
-			lcdWrite("Sveta Privet");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Eto Stas");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Nakonec-to tebe ");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("42 goda");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Happy Birthday");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("ZHelayu");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Tebe");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Schast'ya");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Zdorov'ya");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Lyubvi");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("Poka-poka");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
-			lcdWrite("(*_*)      (*_*)");
-			for(uint32_t i=0; i<10000000; i++){};
-		  clear();
+		lcdWrite("Sveta Privet");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Eto Stas");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Nakonec-to tebe ");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("42 goda");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Happy Birthday");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("ZHelayu");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Tebe");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Schast'ya");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Zdorov'ya");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Lyubvi");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("Poka-poka");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
+		lcdWrite("(*_*)      (*_*)");
+		for(uint32_t i=0; i<10000000; i++){};
+		clear();
 	}
 
 }
